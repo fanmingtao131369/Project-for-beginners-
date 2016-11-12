@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas{
+            display: block;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+    xxxxxxx
+</canvas>
+<script>
+    var canvas = document.querySelector("#canvas");
+    canvas.width = 600;
+    canvas.height = 600;
+    var ctx = canvas.getContext("2d");
+    var list = [
+        {
+            color:"red",
+            path:[
+                {x:0,y:0},
+                {x:600,y:0},
+                {x:300,y:300}
+            ]
+        },
+        {
+            color:"blue",
+            path:[
+                {x:0,y:0},
+                {x:0,y:600},
+                {x:300,y:300}
+            ]
+        },
+        {
+            color:"yellow",
+            path:[
+                {x:600,y:300},
+                {x:600,y:600},
+                {x:300,y:600}
+            ]
+        },
+        {
+            color:"green",
+            path:[
+                {x:600,y:0},
+                {x:600,y:300},
+                {x:450,y:450},
+                {x:450,y:150}
+            ]
+        },
+        {
+            color:"cyan",
+            path:[
+                {x:450,y:150},
+                {x:450,y:450},
+                {x:300,y:300}
+            ]
+        },
+        {
+            color:"purple",
+            path:[
+                {x:300,y:300},
+                {x:450,y:450},
+                {x:300,y:600},
+                {x:150,y:450}
+            ]
+        },
+        {
+            color:"gold",
+            path:[
+                {x:150,y:450},
+                {x:300,y:600},
+                {x:0,y:600}
+            ]
+        }
+    ];
+
+    var length = list.length;
+    for(let i = 0;i<length;i++){
+        drawLine(list[i],ctx);
+    }
+    function drawLine(item,ctx){
+        ctx.beginPath();
+        for(let i = 0;i<item.path.length;i++){
+            ctx.lineTo(item.path[i].x,item.path[i].y)
+        }
+        ctx.fillStyle = item.color;
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>
